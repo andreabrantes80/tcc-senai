@@ -1,0 +1,102 @@
+/* body {
+
+  margin: 0;
+}
+
+.centralize{
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-container {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 300px;
+}
+
+input,
+button {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+button {
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+}
+
+
+.loading{
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+.loading label{
+  font-size: 24px;
+} */
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+h1 {
+    text-align: center;
+    margin: 20px 0;
+    color: #333;
+}
+
+.section-container {
+    display: flex; /* Usa flexbox para alinhar as seções lado a lado */
+    justify-content: space-around; /* Espaçamento uniforme entre as seções */
+    margin: 20px; /* Margem ao redor do container */
+}
+
+section {
+    background: #fff; /* Fundo branco para cada card */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    width: 300px; /* Largura fixa para os cards */
+    text-align: center; /* Centraliza o texto */
+    margin: 10px; /* Espaçamento entre os cards */
+}
+
+button {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+/* Adicionando estilo para os conteúdos dentro dos cards */
+#contentListA, #contentListB {
+    margin-top: 10px; /* Espaçamento entre o título e a lista de conteúdos */
+}
+
+.content-card {
+    background: #e9ecef; /* Cor de fundo para cada conteúdo */
+    border-radius: 5px; /* Cantos arredondados */
+    padding: 10px; /* Espaçamento interno */
+    margin: 5px 0; /* Espaçamento entre os conteúdos */
+    text-align: left; /* Alinhamento à esquerda do texto */
+}
+
+

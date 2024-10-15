@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conteúdos das Turmas</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Inclua seu CSS aqui -->
+</head>
+<body>
+    <h1>Gerenciar Conteúdos das Turmas</h1>
+
+  <div class="section-container">
+    <section id="turmaA">
+        <h2>Conteúdos da Turma A</h2>
+        <div id="contentListA"></div>
+         <!-- Botão de exclusão associado à Turma A -->
+            <button id="deleteButtonA" style="display: none;" data-turma="A">
+                Excluir Conteúdo Selecionado da Turma A
+            </button>
+    </section>
+
+    <section id="turmaB">
+        <h2>Conteúdos da Turma B</h2>
+        <div id="contentListB"></div>
+        <!-- Botão de exclusão associado à Turma B -->
+            <button id="deleteButtonB" style="display: none;" data-turma="B">
+                Excluir Conteúdo Selecionado da Turma B
+            </button>
+    </section>
+</div>
+
+
+    <form id="addContentForm">
+        <input type="text" id="contentTitle" placeholder="Título do Conteúdo" required>
+        <input type="file" id="contentFile" required>
+        <select id="turmaSelect" required>
+            <option value="">Selecione a Turma</option>
+            <option value="Turma A">Turma A</option>
+            <option value="Turma B">Turma B</option>
+        </select>
+        <button type="submit">Adicionar Conteúdo</button>
+    </form>
+
+    <div id="error-message"></div>
+    <div id="loading"></div>
+
+    <script type="module" src="script.js"></script> <!-- Inclua seu JavaScript aqui -->
+    <script type="module" src="firebase-init.js"></script> <!-- Inclua seu JavaScript aqui -->
+</body>
+</html>

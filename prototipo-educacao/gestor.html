@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel do Gestor</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Painel do Gestor</h1>
+    <div class="content">
+        <form id="addCourseForm">
+            <input type="text" id="courseName" placeholder="Nome do Curso" required>
+            <button type="submit">Adicionar Curso</button>
+        </form>
+        <div id="courseList"></div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        // Função para adicionar curso
+        document.getElementById('addCourseForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const courseName = document.getElementById('courseName').value;
+            db.collection('cursos').add({
+                name: courseName,
+                createdAt: firebase.firestore.FieldValue.serverTimestamp()
+            }).then(() => {
+                alert('Curso adicionado com sucesso!');
+            });
+        });
+
+        // Função para listar e excluir cursos
+        const courseList = document.getElementById('courseList');
+        db.collection('cursos').orderBy('createdAt', 'desc').onSnapshot(snapshot => {
+            courseList.innerHTML = '';
+            snapshot.forEach(doc => {
+                const data = doc.data();
+                courseList.innerHTML += `<div>
+                    <h3>${data.name}</h3>
+                    <button onclick="deleteCourse('${doc.id}')">Excluir</button>
+                </div>`;
+            });
+        });
+
+        // Função para excluir curso
+        function deleteCourse(id) {
+            db.collection('cursos').doc(id).delete().then(() => {
+                alert('Curso excluído com sucesso!');
+            });
+        }
+    </script>
+</body>
+</html>

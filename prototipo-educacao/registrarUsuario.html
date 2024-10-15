@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registrar Usuário</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="centralize">
+    <div class="login-container">
+        <div class="register-container">
+            <h1>Registrar</h1>
+            <form id="registerForm" onsubmit="registerUserHandler(event)">
+                <label for="register-email">E-mail:</label>
+                <input type="email" id="register-email" required />
+                <label for="register-password">Senha:</label>
+                <input type="password" id="register-password" required />
+
+                <p>Tipo de usuário:</p>
+                <input type="radio" id="tipo-professor" name="tipo" value="professor" required />
+                <label for="tipo-professor">Professor</label>
+                <input type="radio" id="tipo-aluno" name="tipo" value="aluno" required />
+                <label for="tipo-aluno">Aluno</label>
+                <input type="radio" id="tipo-gestor" name="tipo" value="gestor" required />
+                <label for="tipo-gestor">Gestor</label>
+
+                <button type="submit">Registrar</button>
+            </form>
+            <button id="deleteUserButton" onclick="deleteUser()">Excluir Usuário</button>
+            <p id="error-message"></p>
+            <button id="logoutButton" onclick="logout()">Logout</button>
+        </div>
+    </div>
+
+    <script type="module" src="firebase-init.js"></script>
+    <script type="module" src="loading.js"></script>
+    <script type="module" src="register.js"></script>
+</body>
+</html>
