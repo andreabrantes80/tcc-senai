@@ -39,6 +39,23 @@ window.addEventListener("DOMContentLoaded", () => {
   let selectedContentId = null; // Variável para armazenar o ID do conteúdo selecionado
   let selectedTurma = null; // Variável para armazenar a turma do conteúdo selecionado
 
+
+   // Função para carregar informações do Firestore ao entrar na página
+   const carregarInformacoes = async () => {
+    showLoading(); // Mostra o loading enquanto carrega os dados
+
+    try {
+      // Chama a função para listar os conteúdos
+      await listarConteudos();
+    } catch (error) {
+      console.error("Erro ao carregar informações:", error.message);
+      document.getElementById("error-message").textContent =
+        "Erro ao carregar informações: " + error.message;
+    } finally {
+      hideLoading(); // Esconde o loading
+    }
+  };
+
   // Função debounce para evitar múltiplas requisições consecutivas
   function debounce(func, wait) {
     let timeout;
@@ -59,6 +76,11 @@ window.addEventListener("DOMContentLoaded", () => {
     loadingDiv.style.transform = "translate(-50%, -50%)";
     loadingDiv.innerHTML = "<p>Carregando...</p>";
     document.body.appendChild(loadingDiv);
+
+    // Define um timer para remover o loading após 3 segundos (3000 ms)
+  setTimeout(() => {
+    loadingDiv.remove(); // Remove o elemento de loading
+  }, 3000); // Altere o tempo conforme necessário
   }
 
   // Função para esconder o loading (spinner)
@@ -150,7 +172,7 @@ window.addEventListener("DOMContentLoaded", () => {
           hideLoading(); // Esconde o loading
           loginButton.disabled = false; // Reabilita o botão
         }
-      }, 1000) // Debounce de 1 segundo
+      }, 5000) // Debounce de 5 segundo
     );
   }
 
@@ -234,7 +256,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
         // Define o HTML do card
         contentCard.innerHTML = `
-        <a href="${data.fileUrl}" target="_blank">${data.title}</a>
+        <a href="${data.fileUrl}" target="_blank" download>${data.title}</a>
         <p>Data: ${createdAt}</p>
       `;
 
@@ -264,16 +286,16 @@ window.addEventListener("DOMContentLoaded", () => {
       });
     });
   };
-
-  listarConteudos(); // Chama a função para listar os conteúdos ao carregar a página
-
+  
+  
+  
   // Excluir conteúdo
   const excluirConteudo = async (turma) => {
     if (!selectedContentId) {
       console.error("Nenhum conteúdo selecionado.");
       return;
     }
-
+    
     try {
       const docRef = doc(db, "conteudos", selectedContentId);
       await deleteDoc(docRef);
@@ -284,34 +306,35 @@ window.addEventListener("DOMContentLoaded", () => {
       console.error("Erro ao excluir conteúdo:", error.message);
     }
   };
-
+  
   // Adicionar evento de clique para os botões de exclusão
   deleteButtonA.addEventListener("click", () => excluirConteudo("Turma A"));
   deleteButtonB.addEventListener("click", () => excluirConteudo("Turma B"));
-
+  
   // Adicionar conteúdo
   if (addContentForm) {
     addContentForm.addEventListener("submit", async (e) => {
       e.preventDefault();
-
+      
       const title = document.getElementById("contentTitle").value;
       const fileInput = document.getElementById("contentFile").files[0];
-      const turma = document.querySelector('input[name="turma"]:checked').value;
-
-      if (!title || !fileInput) {
+      const turmaSelect = document.getElementById("turmaSelect");
+      const turma = turmaSelect.value; // Obtém o valor selecionado no select
+      
+      if (!title || !fileInput || !turma) {
         alert("Por favor, preencha todos os campos.");
         return;
       }
-
+      
       const storageRef = ref(storage, `conteudos/${fileInput.name}`);
-
+      
       showLoading();
-
+      
       try {
         // Faz o upload do arquivo
         await uploadBytes(storageRef, fileInput);
         const fileUrl = await getDownloadURL(storageRef);
-
+        
         // Adiciona o conteúdo ao Firestore
         await addDoc(collection(db, "conteudos"), {
           title,
@@ -319,7 +342,7 @@ window.addEventListener("DOMContentLoaded", () => {
           turma,
           createdAt: serverTimestamp(),
         });
-
+        
         console.log("Conteúdo adicionado com sucesso!");
         listarConteudos(); // Atualiza a lista de conteúdos após adicionar
         addContentForm.reset(); // Reseta o formulário
@@ -328,6 +351,10 @@ window.addEventListener("DOMContentLoaded", () => {
       } finally {
         hideLoading();
       }
+      
     });
   }
+  
+  carregarInformacoes();
+  // listarConteudos(); // Chama a função para listar os conteúdos ao carregar a página
 });

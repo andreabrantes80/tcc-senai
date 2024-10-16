@@ -9,26 +9,23 @@
 <body>
     <h1>Gerenciar Conteúdos das Turmas</h1>
 
-  <div class="section-container">
-    <section id="turmaA">
-        <h2>Conteúdos da Turma A</h2>
-        <div id="contentListA"></div>
-         <!-- Botão de exclusão associado à Turma A -->
+    <div class="section-container">
+        <section id="turmaA">
+            <h2>Conteúdos da Turma A</h2>
+            <div id="contentListA"></div>
             <button id="deleteButtonA" style="display: none;" data-turma="A">
                 Excluir Conteúdo Selecionado da Turma A
             </button>
-    </section>
+        </section>
 
-    <section id="turmaB">
-        <h2>Conteúdos da Turma B</h2>
-        <div id="contentListB"></div>
-        <!-- Botão de exclusão associado à Turma B -->
+        <section id="turmaB">
+            <h2>Conteúdos da Turma B</h2>
+            <div id="contentListB"></div>
             <button id="deleteButtonB" style="display: none;" data-turma="B">
                 Excluir Conteúdo Selecionado da Turma B
             </button>
-    </section>
-</div>
-
+        </section>
+    </div>
 
     <form id="addContentForm">
         <input type="text" id="contentTitle" placeholder="Título do Conteúdo" required>
@@ -44,7 +41,7 @@
     <div id="error-message"></div>
     <div id="loading"></div>
 
-    <script type="module" src="script.js"></script> <!-- Inclua seu JavaScript aqui -->
-    <script type="module" src="firebase-init.js"></script> <!-- Inclua seu JavaScript aqui -->
+    <script type="module" src="firebase-init.js"></script>
+    <script type="module" src="script.js"></script>
 </body>
 </html>
