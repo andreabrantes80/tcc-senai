@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escola Toshiro</title>
+    <!-- BIBLIOTECA DE ICONES  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Link para o arquivo CSS externo -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Header com Navbar Responsiva -->
+    <header>
+        <div class="logo">
+            <a href="index.html"><img href="index.html"
+                    src="https://scontent.fbsb3-1.fna.fbcdn.net/v/t39.30808-6/291844527_385814843533102_6692959199087250589_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=J310r_dJKMcQ7kNvgEMQjXl&_nc_ht=scontent.fbsb3-1.fna&_nc_gid=ALi7MJkthwTte_53G5BGfWt&oh=00_AYCTHHIlrEgTyf7zkFleIC0l3Cy83ZMDLNo2fA57IZuCMw&oe=670CA4FE"
+                    alt="Logo Escola Toshiro"></a>
+        </div>
+        <nav>
+            <a href="#galeria">Galeria</a>
+            <a href="#noticias">Notícias</a>
+            <a href="#quem-somos">Quem Somos</a>
+            <a href="#contato">Contato</a>
+            <a href="professor.html">Professor</a>
+            <a href="aluno.html">Aluno</a>
+            <a href="gestor.html">Gestor</a>
+        </nav>
+        <div class="auth-buttons">
+            <a href="#" class="login-button" onclick="openModal()">Login</a>
+            <a href="logout.html" class="logout-button">Logout</a>
+        </div>
+    </header>
+
+    <!-- MENU DE CONTATO -->
+  <section id="contato">
+    <div class="contact-form">
+      <h2> Entre em contato </h2>
+      <form>
+        <label for="name"><i class="fas fa-user"></i> Nome</label>
+        <input type="text" id="name" placeholder="Digite seu nome">
+
+        <label for="email"><i class="fas fa-envelope"></i> Email</label>
+        <input type="text" id="email" placeholder="Digite seu email">
+
+        <!-- <label for="name"><i class="fas fa-comment"></i>Mensagem</label> -->
+        <label for="name"><i class="fas fa-anchor"></i> Mensagem</label>
+        <textarea id="message" rows="5" placeholder="Como podemos te ajudar?"></textarea>
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
+  </section>
+
+
+    <!-- Rodapé com informações de contato -->
+    <footer id="contato">
+        <p>Endereço: Taguatinga, Brasília, DF</p>
+        <p>Telefone: (61) 3554-7436</p>
+        <p>Horário: Segunda a Sexta, das 08h às 22h</p>
+    </footer>
+
+    <!-- Link para o arquivo JavaScript externo -->
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,414 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: rgb(212, 232, 240);
+    color: #333;
+}
+
+header {
+    background-color: #03440c;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    list-style-type: none;
+    /*position: ?;  fixar no topo*/
+}
+
+header .portal {
+    font-size: 40px;
+}
+
+header .logout {
+    font-size: 20px;
+    margin-right: 10px;
+
+}
+
+header .logout:hover {
+    transform: scale(1.2);
+    /* Aumenta em 20% ao passar o mouse*/
+    text-decoration: none;
+}
+
+/* ESTILO DA LOGO DO SENAI NO CANTO SUPERIOR ESQUERDO DO CABEÇALHO HEADER */
+header .logo img {
+    width: 80px;
+    margin-right: 20px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+nav a {
+    color: white;
+    margin-left: 20px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+
+/* ESTILO DO MENU LATERAL ESQUERDO DAS PAGINAS PROFESSOR/GESTOR/ALUNO */
+aside {
+    width: 220px;
+    height: 400px;
+    float: left;
+    padding: 20px;
+    background-color: #122e47;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+/* centralizando a foto do avatar */
+aside .logo {
+    text-align: center;
+}
+
+aside .logo img {
+    width: 150px;
+    border-radius: 50%;
+    border: rgb(165, 161, 159) solid;
+    margin-bottom: 50px;
+}
+
+
+aside ul {
+    list-style-type: none;
+    margin-bottom: 30px;
+}
+
+aside ul li {
+    margin-bottom: 10px;
+}
+
+aside ul li a {
+    color: #ece6e6;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+aside ul li a:hover {
+    color: #31a5c2;
+}
+
+/* ÍNICIO DO EFEITO CARROSSEL NA GALERIA
+#galeria {
+    position: relative;
+    overflow: hidden;
+}
+
+.slides {
+    display: flex;
+    animation: slide 5s infinite;
+}
+
+.slides img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(0);
+    }
+
+    33% {
+        transform: translateX(-100%);
+    }
+
+    66% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+} */
+
+#galeria {
+    position: relative;
+    overflow: hidden; /* Esconde o que está fora da área do carrossel */
+    width: 100%; /* Largura total */
+    height: 300px; /* Altura fixa para o carrossel */
+}
+
+.slides {
+    display: flex;
+    width: 300%; /* Para 3 imagens, o contêiner precisa ter 300% da largura */
+    animation: slide 15s infinite;
+  }
+  
+  .slides img {
+    width: 100vw; /* Faz com que a imagem ocupe 100% da largura da viewport */
+    height: 80vh; /* Aumenta a altura das imagens para 80% da altura da viewport */
+    object-fit: cover; /* Garante que a imagem preencha todo o espaço, sem distorção */
+  }
+  
+  @keyframes slide {
+    0% {
+      transform: translateX(0);
+    }
+  
+    33.33% {
+      transform: translateX(-100vw); /* Mover para a segunda imagem */
+    }
+  
+    66.66% {
+      transform: translateX(-200vw); /* Mover para a terceira imagem */
+    }
+  
+    100% {
+      transform: translateX(0); /* Voltar para a primeira imagem */
+    }
+  }
+
+
+
+
+
+/* FIM DO EFEITO CARROSSEL NA GALERIA*/
+
+/* INICIO DO ESTILO DAS CAIXAS DE NOTÍCIA */
+#noticias {
+    display: flex;
+    /* Utiliza layout flexível para organizar as caixas */
+    flex-wrap: wrap;
+    /* Permite que as caixas quebrem linha se necessário */
+    justify-content: center;
+    /* Distribui as caixas com espaçamento ao redor */
+    padding: 20px;
+    /* Adiciona espaçamento interno ao contêiner das caixas */
+}
+
+/* Estilos gerais das caixas */
+.box {
+    width: 200px;
+    /* Largura fixa de 200px */
+    height: 150px;
+    /* Altura fixa de 150px */
+    margin: 20px;
+    /* Margem ao redor das caixas */
+    background-color: #f0e8eb;
+    /* Cor de fundo das caixas */
+    color: rgb(20, 1, 1);
+    /* Cor do texto dentro das caixas */
+    display: flex;
+    /* Flexbox para centralizar o conteúdo */
+    justify-content: center;
+    /* Centraliza horizontalmente o texto dentro das caixas */
+    align-items: center;
+    /* Centraliza verticalmente o texto dentro das caixas */
+    text-align: center;
+    /* Centraliza o texto dentro da caixa */
+    transition: all 0.3s ease;
+    /* Transição suave para qualquer efeito aplicado nas caixas */
+    font-family: Copperplate, Papyrus, fantasy;
+    font-size: 25px;
+    border: #122e47 solid;
+}
+
+/* Efeito de zoom ao passar o mouse na caixa de notícias*/
+.box-zoom:hover {
+    transform: scale(1.1);
+    /* Aumenta a caixa em 10% */
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
+    /* Cria uma sombra grande e suave ao redor da caixa */
+    background-color: #1a4575;
+    /* Altera a cor de fundo da caixa */
+}
+
+/* FIM  DO ESTILO DAS CAIXAS DE NOTÍCIA */
+
+/*INÍCIO ESTILO QUEM SOMOS*/
+#quem-somos {
+    background-color: #4f7594;
+    padding: 40px 50px;
+    margin-top: 40px;
+    margin-right: 20px;
+    border-radius: 50px;
+    box-shadow: 0 4px 8px (0, 0, 0, 0.1);
+    color: #031524;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+/* titulo da seção de contato */
+#quem-somos h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+
+/* INÍCIO DO ESTILO DO FORMULÁRIO DE CONTATO */
+/* INÍCIO DO ESTILO DO FORMULÁRIO DE CONTATO */
+.contact-form {
+    background-color: #4f7594;
+    padding: 40px 50px;
+    margin: 40px 15px 0; /* Margem de 40px no topo, 15px nas laterais, 0 embaixo */
+    border-radius: 50px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #031524;
+}
+
+/* título da seção de contato */
+.contact-form h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* estilo dos labels */
+.contact-form label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+/* estilos dos campos do formulário de contato */
+.contact-form input,
+.contact-form textarea {
+    width: 50%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc; /* Adicionei uma cor ao border para ficar visível */
+    border-radius: 5px;
+}
+
+/* estilo do botão */
+.contact-form button {
+    width: 50%;
+    padding: 15px 30px;
+    background-color: #0b244b;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+    background-color: #0e3dbe;
+}
+
+
+/* FIM DO ESTILO DO FORMULÁRIO DE CONTATO */
+
+/* INÍCIO DO ESTILO DO RODAPÉ DA PÁGINA */
+footer {
+    background-color: #0a1f33;
+    ;
+    /* Cor de fundo escura para o rodapé */
+    color: white;
+    /* Cor do texto branca */
+    text-align: center;
+    /* Centraliza o texto no rodapé */
+    padding: 10px 0;
+    /* Espaçamento interno no topo e embaixo */
+    margin-top: 40px;
+    /* Espaçamento superior para separar o rodapé do conteúdo principal */
+    position: relative;
+    /*ficar no final fixo*/
+    bottom: 0;
+    /*sem espaçamento abaixo dele*/
+    width: 100%;
+    /* ocupa a largura total da tela*/
+
+}
+
+/* INÍCIO DO ESTILO DO RODAPÉ DA PÁGINA */
+
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.login-button,
+.logout-button {
+    text-decoration: none;
+    padding: 8px 12px;
+    background-color: #178f0c;
+    /* Cor do botão */
+    color: white;
+    /* Cor do texto */
+    border-radius: 4px;
+    /* Bordas arredondadas */
+}
+.modal {
+    display: none; /* Oculta a modal por padrão */
+    position: fixed; /* Fica fixa na tela */
+    z-index: 1; /* Fica acima de outros elementos */
+    left: 0;
+    top: 0;
+    width: 100%; /* Largura total */
+    height: 100%; /* Altura total */
+    overflow: auto; /* Permite rolagem se necessário */
+    background-color: rgba(10, 31, 51, 0.7); /* Fundo escuro com opacidade */
+}
+
+.modal-content {
+    background-color: #fefefe; /* Cor de fundo da modal */
+    margin: 10% auto; /* Centraliza verticalmente */
+    padding: 20px;
+    border-radius: 10px; /* Bordas arredondadas */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra suave */
+    width: 300px; /* Largura da modal */
+}
+
+.close {
+    color: #0a1f33; /* Cor do 'x' de fechar */
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #007BFF; /* Cor ao passar o mouse */
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-content h2 {
+    color: #0a1f33; /* Cor do título */
+}
+
+.modal-content label {
+    font-weight: bold; /* Labels em negrito */
+}
+
+.modal-content input,
+.modal-content select {
+    width: calc(100% - 20px); /* Largura total menos padding */
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc; /* Bordas padrão */
+    border-radius: 5px; /* Bordas arredondadas */
+}
+
+.modal-content button {
+    width: 100%; /* Largura total do botão */
+    padding: 12px;
+    background-color: #0b244b; /* Cor do botão */
+    color: white; /* Cor do texto */
+    border: none;
+    border-radius: 5px; /* Bordas arredondadas */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Efeito de transição */
+}
+
+.modal-content button:hover {
+    background-color: #0e3dbe; /* Cor ao passar o mouse */
+}
