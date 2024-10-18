@@ -1,13 +1,11 @@
 import { auth, db, storage } from "./firebase-init.js";
 import {
   signInWithEmailAndPassword,
-  sendPasswordResetEmail,
-  signOut,
+  createUserWithEmailAndPassword,
 } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-auth.js";
 import {
   ref,
   uploadBytes,
-  getDownloadURL,
   getStorage,
   deleteObject,
 } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-storage.js";
@@ -15,18 +13,8 @@ import {
   doc,
   getDoc,
   setDoc,
-  updateDoc,
-  updateObject,
-  getFiles,
-  getDownloadURL,
-  createUserWithEmailAndPassword,
-  addDoc,
-  deleteDoc,
   collection,
-  serverTimestamp,
-  query,
-  onSnapshot,
-  orderBy,
+
 } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-firestore.js";
 
 // Função para cadastrar usuário
@@ -51,22 +39,7 @@ const registerUser = async (email, password, role) => {
   }
 };
 
-// Função para login de usuário
-const loginUser = async (email, password) => {
-  try {
-    const userCredential = await signInWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
-    const user = userCredential.user;
 
-    console.log("Usuário logado com sucesso:", user.email);
-    return user;
-  } catch (error) {
-    console.error("Erro ao fazer login:", error.message);
-  }
-};
 
 // Função para upload de arquivos
 const uploadContent = async (file, turmaId) => {
@@ -218,7 +191,54 @@ window.closeModal = function (modalId) {
 };
 
 // Chamando as funções para listar dados assim que a página carregar
-window.onload = function () {
-  listarProfessores();
-  listarTurmas();
+// window.onload = function () {
+//   listarProfessores();
+//   listarTurmas();
+// };
+
+
+// Função para login a partir do formulário
+window.loginUserFromForm = async function () {
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("senha").value;
+  const role = document.getElementById("userSelect").value;
+
+  if (!role) {
+    alert("Por favor, selecione um usuário.");
+    return;
+  }
+
+  const user = await loginUser(email, password);
+
+  if (user) {
+    // Aqui você pode redirecionar o usuário com base no seu papel
+    if (role === "professor") {
+      window.location.href = "paginaProfessor.html"; // Redirecionar para a página do professor
+    } else if (role === "aluno") {
+      window.location.href = "paginaAluno.html"; // Redirecionar para a página do aluno
+    } else if (role === "gestor") {
+      window.location.href = "paginaGestor.html"; // Redirecionar para a página do gestor
+    }
+  }
 };
+
+// // Função para login de usuário
+// const loginUser = async (email, password) => {
+//   try {
+//     const userCredential = await signInWithEmailAndPassword(
+//       auth,
+//       email,
+//       password
+//     );
+//     const user = userCredential.user;
+
+//     console.log("Usuário logado com sucesso:", user.email);
+//     return user;
+//   } catch (error) {
+//     console.error("Erro ao fazer login:", error.message);
+//   }
+// };
+
+
+
+
