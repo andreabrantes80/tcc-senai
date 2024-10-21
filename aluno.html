@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal do Aluno</title>
+    <!-- Link para o arquivo CSS externo -->
+    <link rel="stylesheet" href="styles/styletcc.css">
+</head>
+
+<body>
+    <!-- Header da ÁREA LOGADA PROFESSOR/ALUNO/GESTOR -->
+    <header>
+        <!-- div para estilizar a logo -->
+        <div class="logo">
+            <a href="index.html"><img href="index.html" src="img/logosavior.png" alt="Logo Escola Savior"></a>
+        </div>
+        <!-- div para estilizar o nome do portal -->
+        <div class="portal">
+            <li>Portal do Aluno</li>
+        </div>
+        <!-- div logout para estilizar o texto do logout -->
+        <div class="logout">
+            <nav>
+            <form id="logout-form" class="auth-buttons">
+                <button class="login-logout" type="submit">Logout</button>
+            </form>
+            </nav>
+        </div>
+
+    </header>
+
+
+    <!-- Menu Lateral esquerdo para professor / gestor e aluno -->
+    <aside>
+        <div class="logo">
+            <img src="https://w7.pngwing.com/pngs/135/48/png-transparent-project-management-office-strategy-strategic-management-avatar-puzzle-heroes-human-resource-management-head-thumbnail.png"
+                alt="Avatar Pessoal">
+        </div>
+        <ul>
+            <li><a href="#" data-item="conteudo1">Matemática</a></li>
+            <li><a href="#" data-item="conteudo2">História</a></li>
+            <li><a href="#" data-item="conteudo3">Ciências</a></li><br>
+            <li><a href="jogo-recreio.html"  target="_blank"  data-item="game">Hora do Recreio!!</a></li>
+        </ul>
+    </aside>
+
+     <!-- Seção para listar turmas e alunos -->
+      <section id="turmas">
+
+      </section>
+
+    <!-- INICIO CONTEÚDO DA PÁGINA DO ALUNO -->
+    <main class="container-aluno">
+          <h2>Turmas e Alunos</h2>
+        <table id="turmasTable">
+          <thead>
+            <tr>
+              <th>Turma</th>
+              <th>Aluno</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Dados serão inseridos aqui dinamicamente -->
+          </tbody>
+        </table>
+
+        <section id="conteudo1" class="section-aluno">
+            <ul>
+                <li>Conteúdo de Geometria</li><br>
+                <li>Conteúdo de Aritmética</li><br>
+                <li>Conteúdo Equação do 2º Grau</li>
+            </ul>
+        </section>
+
+        <section id="conteudo2" class="section-aluno">
+            <ul>
+                <li>Conteúdo Revolução Francesa</li><br>
+                <li>Conteúdo História do Brasil</li><br>
+                <li>Conteúdo 2º Guerra Mundial</li>
+            </ul>
+        </section>
+
+        <section id="conteudo3" class="section-aluno">
+            <ul>
+                <li>Conteúdo de Macronutrientes</li><br>
+                <li>Conteúdo de Sistema Respiratório</li><br>
+                <li>Conteúdo de Sistema Nervoso</li>
+            </ul>
+        </section>
+        </section>
+    </main>
+
+    <!-- FIM DO CONTEÚDO DA PÁGINA DO ALUNO -->
+       <!-- Rodapé com informações de contato -->
+
+
+    <!-- INÍCIO DO SCRIPT DO ALUNO -->
+     <script type="module" src="script/login.js"></script>
+    <script type="module" src="script/script.js"></script>
+    <script type="module" src="script/firebase-init.js"></script>
+    <!-- <script>
+        function showSection(event) {
+            event.preventDefault();
+            const targetId = event.target.getAttribute('data-item');
+            const sections = document.querySelectorAll('.section-aluno');
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(targetId).style.display = 'block';
+        }
+
+        document.querySelectorAll('aside ul li a').forEach(link => {
+            link.addEventListener('click', showSection);
+        });
+
+        function toggleConteudo(id) {
+            var conteudo = document.getElementById(id);
+            if (conteudo.style.display === "none") {
+                conteudo.style.display = "block";
+            } else {
+                conteudo.style.display = "none";
+            }
+        }
+
+    </script> -->
+      <!-- FIM DO SCRIPT DO ALUNO -->
+
+    <!-- Javascript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    <!-- INÍCIO CÓDIGO PARA INSERIR O BOTÃO/ACESSEBILIDADE LIBRAS -->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+
+        // FIM CÓDIGO PARA INSERIR O BOTÃO/ACESSEBILIDADE LIBRAS
+    </script>
+
+
+</body>
+
+</html>

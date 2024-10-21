@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portal do Professor</title>
+    <!-- Link para o arquivo CSS externo -->
+    <link rel="stylesheet" href="styles/styletcc.css" />
+  </head>
+
+  <body>
+    <!-- Header da ÁREA LOGADA PROFESSOR/ALUNO/GESTOR -->
+    <header>
+      <!-- div para estilizar a logo -->
+      <div class="logo">
+        <a href="index.html"
+          ><img
+            href="index.html"
+            src="img/logosavior.png"
+            alt="Logo Escola Savior"
+        /></a>
+      </div>
+      <!-- div para estilizar o nome do portal -->
+      <div class="portal">
+        <li>Portal do Professor</li>
+      </div>
+      <!-- div logout para estilizar o texto do logout -->
+      <div class="auth-buttons">
+        <nav>
+           <form id="logout-form" class="auth-buttons">
+          <button class="login-logout" type="submit">Logout</button>
+        </form>
+        </nav>
+      </div>
+    </header>
+
+     <!-- Modal de Confirmação de Logout -->
+    <div id="logoutModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('logoutModal')">&times;</span>
+        <h2>Confirmar Logout</h2>
+        <p>Você tem certeza de que deseja sair?</p>
+        <button id="confirmLogout">Sim, sair</button>
+        <button style="margin-top: 5px" onclick="closeModal('logoutModal')">
+          Cancelar
+        </button>
+      </div>
+    </div>
+
+    <!-- Menu Lateral esquerdo para professor / gestor e aluno -->
+    <div class="main-content-prof">
+      <aside>
+        <div class="logo">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/16/16363.png"
+            alt="Avatar Pessoal"
+          />
+        </div>
+
+        <ul>
+          <li>
+            <a href="#" data-item="professores" id="minhasProfessoresLink"
+              >Listar Professores</a
+            >
+          </li>
+          <li>
+            <a href="#" data-item="turmas" id="minhasTurmasLink"
+              >Listar Alunos</a
+            >
+          </li>
+          <li><a href="#" data-item="uploads">Inserir Arquivos</a></li>
+          <!-- <li><a href="#" data-item="estudanteForm">Turmas</a></li>-->
+          <li><a href="#" data-item="lista">Relatório</a></li>
+        </ul>
+      </aside>
+
+      <main class="container-prof">
+        <!-- <section id="uploads" class="section-prof">
+                <h1>Gerenciar Arquivos das Turmas</h1>
+                <div class="upload-form">
+                <form id="turmas">
+                    <label for="turmasSelect">Selecione a Turma:</label>
+                    <select id="turmasSelect">
+                        <option value="" disabled selected></option>
+                        <option>Turma 1</option>
+                        <option>Turma 2</option>
+                        <option>Turma 3</option>
+                    </select>
+                    <input type="file" id="fileInput" required>
+                    <button type="submit">Enviar</button>
+                </form>
+                </div>
+            </section>
+
+                <section id="lista" class="section-prof">
+                    <h1>Arquivos Enviados</h1>
+                    <div class="lista">
+                <ul id="listaArquivos">
+                    <li>Arquivo 01</li><br>
+                    <li>Arquivo 02</li><br>
+                    <li>Arquivo 03</li><br>
+                    <li>Arquivo 04</li><br>
+                </ul>
+
+                    </div>
+                </section> -->
+
+        <section id="professores">
+          <h2>Professores Cadastrados</h2>
+          <table id="professoresTable">
+            <thead>
+              <tr>
+                <th>Nome do Professor</th>
+                <th>Email</th>
+                <th>Disciplina</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Dados serão inseridos aqui dinamicamente -->
+            </tbody>
+          </table>
+        </section>
+
+        <section id="turmas">
+          <h2>Turmas e Alunos</h2>
+          <table id="turmasTable">
+            <thead>
+              <tr>
+                <th>Turma</th>
+                <th>Aluno</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Dados serão inseridos aqui dinamicamente -->
+            </tbody>
+          </table>
+
+          <h3>Enviar Documento para Turma</h3>
+          <input type="file" id="fileInput" />
+          <select id="turmaSelect">
+            <option value="" disabled selected>Selecione a turma</option>
+            <option value="A">Turma A</option>
+            <option value="B">Turma B</option>
+            <option value="C">Turma C</option>
+          </select>
+          <button
+            onclick="enviarDocumentoParaTurma(turmaSelect.value, fileInput.files[0])"
+          >
+            Enviar
+          </button>
+        </section>
+      </main>
+    </div>
+
+    <!-- Rodapé com informações de contato -->
+    <footer id="rodape">
+      <div class="rodape">
+        <a href="https://policies.google.com/privacy?hl=pt-BR" target="_blank">
+          <p>Termos e Privacidade</p>
+        </a>
+      </div>
+
+      <div class="rodape">
+        <p>&copy; 2024 - Todos os direitos reservados.</p>
+      </div>
+
+      <div class="rodape">
+        <p>Redes Sociais</p>
+
+        <a
+          href="https://www.youtube.com/channel/UChcNrZWnl5MH6RX84ORcreQ"
+          target="_blank"
+        >
+          <i class="fa-brands fa-youtube"></i>
+        </a>
+
+        <a href="https://www.instagram.com/senai_df" target="_blank">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+
+        <a href="https://www.facebook.com/senaidf" target="_blank">
+          <i class="fa-brands fa-facebook"></i>
+        </a>
+      </div>
+    </footer>
+
+    <!-- INÍCIO SCRIPT DO PROFESSOR -->
+    <script>
+      function showSection(event) {
+        event.preventDefault();
+        const targetId = event.target.getAttribute("data-item");
+        const sections = document.querySelectorAll(".section-prof");
+        sections.forEach((section) => {
+          section.style.display = "none";
+        });
+        document.getElementById(targetId).style.display = "block";
+      }
+
+      document.querySelectorAll("aside ul li a").forEach((link) => {
+        link.addEventListener("click", showSection);
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // Carregar turmas
+        db.collection("turmas")
+          .get()
+          .then((querySnapshot) => {
+            const turmasSelect = document.getElementById("turmasSelect");
+            querySnapshot.forEach((doc) => {
+              const turma = doc.data();
+              const option = document.createElement("option");
+              option.value = doc.id;
+              option.textContent = `${turma.nome} - ${turma.descricao}`; // Corrigido para usar template string
+              turmasSelect.appendChild(option);
+            });
+
+            // Carregar arquivos para a primeira turma por padrão
+            if (!querySnapshot.empty) {
+              carregarArquivos(querySnapshot.docs[0].id);
+            }
+
+            turmasSelect.addEventListener("change", function () {
+              const turmaId = turmasSelect.value;
+              carregarArquivos(turmaId);
+            });
+          })
+          .catch((error) => {
+            console.error("Erro ao buscar turmas:", error);
+            alert("Erro ao carregar turmas");
+          });
+
+        document
+          .getElementById("turmas")
+          .addEventListener("submit", function (event) {
+            // Corrigido o ID do formulário
+            event.preventDefault();
+
+            const turmaId = document.getElementById("turmasSelect").value;
+            const fileInput = document.getElementById("fileInput");
+            const file = fileInput.files[0];
+
+            if (file) {
+              // Verifica se um arquivo foi selecionado
+              const storageRef = storage.ref(
+                `arquivos/${turmaId}/${file.name}`
+              ); // Corrigido para usar template string
+              const uploadTask = storageRef.put(file);
+
+              uploadTask.on(
+                "state_changed",
+                null,
+                (error) => {
+                  console.error("Erro ao enviar arquivo:", error);
+                },
+                () => {
+                  uploadTask.snapshot.ref
+                    .getDownloadURL()
+                    .then((downloadURL) => {
+                      db.collection("turmas")
+                        .doc(turmaId)
+                        .update({
+                          arquivos: firebase.firestore.FieldValue.arrayUnion({
+                            nome: file.name,
+                            url: downloadURL,
+                          }),
+                        })
+                        .then(() => {
+                          console.log("Arquivo enviado com sucesso!");
+                          carregarArquivos(turmaId); // Atualiza a lista de arquivos
+                        })
+                        .catch((error) => {
+                          console.error("Erro ao salvar arquivo:", error);
+                        });
+                    });
+                }
+              );
+            } else {
+              alert("Por favor, selecione um arquivo para enviar.");
+            }
+          });
+      });
+
+      function carregarArquivos(turmaId) {
+        db.collection("turmas")
+          .doc(turmaId)
+          .get()
+          .then((doc) => {
+            const turma = doc.data();
+            const listaArquivos = document.getElementById("listaArquivos");
+            listaArquivos.innerHTML = "";
+            turma.arquivos.forEach((arquivo) => {
+              const li = document.createElement("li");
+              li.textContent = `${arquivo.nome} - `;
+              const link = document.createElement("a");
+              link.href = arquivo.url;
+              link.textContent = "Download";
+              link.target = "_blank"; // Para abrir o download em uma nova aba
+              li.appendChild(link);
+              listaArquivos.appendChild(li);
+            });
+          })
+          .catch((error) => {
+            console.error("Erro ao buscar arquivos:", error);
+          });
+      }
+    </script>
+    <!-- FIM DO SCRIPT DO PROFESSOR -->
+
+    <!-- Link para o arquivo JavaScript externo -->
+    <script type="module" src="script/firebase-init.js"></script>
+    <script type="module" src="script/login.js"></script>
+    <script type="module" src="script/script.js"></script>
+
+    <!-- Javascript -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- CÓDIGO PARA INSERIR O BOTÃO/ACESSEBILIDADE LIBRAS -->
+    <div vw class="enabled">
+      <div vw-access-button class="active"></div>
+      <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+      </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+      new window.VLibras.Widget("https://vlibras.gov.br/app");
+    </script>
+  </body>
+</html>

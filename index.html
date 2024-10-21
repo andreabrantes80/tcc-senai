@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Escola Savior</title>
+    <!-- bootstrap inserido via CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+
+    <!-- BIBLIOTECA DE ICONES  -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+
+    <!-- Link para o arquivo CSS externo -->
+    <link rel="stylesheet" href="/styles/styletcc.css" />
+  </head>
+
+  <body>
+    <!-- Header com Navbar Responsiva -->
+    <header>
+      <div class="logo">
+        <a href="index.html">
+          <img
+            href="index.html"
+            src="img/logosavior.png"
+            alt="Logo Escola Savior"
+          />
+        </a>
+      </div>
+      <nav>
+        <a href="#galeria">Galeria</a>
+        <a href="#catalogo">Notícias</a>
+        <a href="#quem-somos">Sobre</a>
+        <a href="#contato">Contato</a>
+        <!-- <a href="professor.html">Professor</a>
+        <a href="aluno.html">Aluno</a>
+        <a href="gestor.html">Gestor</a> -->
+      </nav>
+
+      <div class="auth-buttons">
+        <a href="#" class="login-logout" onclick="openModal('loginModal')"
+          >Login</a
+        >
+        <form id="logout-form" class="auth-buttons">
+          <button class="login-logout" type="submit">Logout</button>
+        </form>
+      </div>
+    </header>
+
+    <!-- Modal de Confirmação de Logout -->
+    <div id="logoutModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('logoutModal')">&times;</span>
+        <h2>Confirmar Logout</h2>
+        <p>Você tem certeza de que deseja sair?</p>
+        <button id="confirmLogout">Sim, sair</button>
+        <button style="margin-top: 5px" onclick="closeModal('logoutModal')">
+          Cancelar
+        </button>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="loginModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('loginModal')">&times;</span>
+        <h2>Login</h2>
+        <form id="loginForm">
+          <label for="userSelect">Selecione o Usuário:</label>
+          <select id="userSelect" name="userSelect" required>
+            <option value="">Escolha um usuário</option>
+            <option value="professor">Professor</option>
+            <option value="aluno">Aluno</option>
+            <option value="gestor">Gestor</option>
+          </select>
+          <label for="email">E-mail:</label>
+          <input type="email" id="email" name="email" required />
+          <label for="senha">Senha:</label>
+          <input type="password" id="senha" name="senha" required />
+          <button type="submit">Entrar</button>
+        </form>
+        <!-- Mensagem de erro -->
+        <div id="error-message" style="color: red; display: none"></div>
+      </div>
+    </div>
+
+    <!-- INÍCIO CARROSEL DA GALERIA DE FOTOS DA ESCOLA-->
+    <div class="carouselfoto">
+      <div class="slidesfoto">
+        <div class="slidefoto">
+          <img
+            src="https://gizmodo.uol.com.br/wp-content/blogs.dir/8/files/2023/09/escola-japao.jpg"
+          />
+        </div>
+        <div class="slidefoto">
+          <img
+            src="https://www.coisasdojapao.com/wp-content/uploads/2017/06/Fuji-kindergartenJap%C3%A3ovistadecima-1080x864.jpg"
+          />
+        </div>
+      </div>
+      <button class="prevfoto" onclick="prevSlide()">&#10094;</button>
+      <button class="nextfoto" onclick="nextSlide()">&#10095;</button>
+    </div>
+    <!-- FIM DO CARROSSEL DA GALERIA DE FOTOS DA ESCOLA -->
+
+    <!-- MENU DE NOTICIAS EM FORMA DE CATÁLOGO -->
+    <div class="noticias">
+      <h2>Notícias</h2>
+    </div>
+
+    <section id="catalogo">
+      <div class="catalog-card">
+        <img src="img/SENAI.JPG" alt="ia" />
+        <h3>
+          Inovação e tecnologia: Equipe Guard IA do SENAI Ituiutaba conquista o
+          2° lugar no Inova 2024, em Belo Horizonte.
+        </h3>
+        <p>
+          Na fase estadual, 10 projetos foram finalistas, dos quais 2 eram da
+          unidade do SENAI Ituiutaba. A equipe Guard IA destacou-se com a
+          solução “Sistema de Identificação do Uso de EPI com Visão
+          Computacional e Inteligência Artificial”, e a equipe IoT Energy Trek
+          apresentou o projeto “Monitoramento Inteligente de Energia”.
+        </p>
+        <p>Fonte: FIEMG</p>
+        <a
+          target="_blank"
+          href="https://www.fiemg.com.br/noticias/equipe-guard-ia-do-senai-ituiutaba-conquista-o-2-lugar-no-inova-2024-em-belo-horizonte/"
+        >
+          <button>Saiba mais</button>
+        </a>
+      </div>
+
+      <div class="catalog-card">
+        <img src="img/apagao.jpg" alt="ia" />
+        <h3>
+          Apagão cibernético: Como a tecnologia mundial caiu de uma só vez
+        </h3>
+        <p>
+          Atualização de software de uma única empresa de segurança cibernética
+          causou caos na sexta-feira (19), ressaltando a fragilidade da economia
+          global e sua dependência de sistemas de computador.
+        </p>
+        <p>Fonte: CNN BRASIL</p>
+        <a
+          target="_blank"
+          href="https://www.cnnbrasil.com.br/internacional/apagao-cibernetico-como-a-tecnologia-mundial-caiu-de-uma-so-vez/"
+        >
+          <button>Saiba mais</button>
+        </a>
+      </div>
+
+      <div class="catalog-card">
+        <img src="img/foguete.jpg" alt="ia" />
+        <h3>
+          Ciência: Em feito inédito, SpaceX consegue recuperar propulsor do
+          megafoguete Starship
+        </h3>
+        <p>
+          A SpaceX conseguiu, neste domingo (13), realizar uma manobra
+          espetacular: recuperou o propulsor de seu megafoguete Starship após um
+          voo de teste de quase nove minutos, um feito que pode ser decisivo
+          para a reutilização deste pesado lançador.
+        </p>
+        <p>Fonte: ISTOE</p>
+        <a
+          target="_blank"
+          href="https://www.fiemg.com.br/noticias/equipe-guard-ia-do-senai-ituiutaba-conquista-o-2-lugar-no-inova-2024-em-belo-horizonte/"
+        >
+          <button>Saiba mais</button>
+        </a>
+      </div>
+
+      <div class="catalog-card">
+        <img src="img/mapa-cosmico.jpg" alt="ia" />
+        <h3>
+          Ciência: Agência Espacial Europeia revela 1ª página do atlas cósmico
+          do telescópio Euclid.
+        </h3>
+        <p>
+          Cem milhões de estrelas e galáxias: a Agência Espacial Europeia (ESA)
+          revelou um primeiro fragmento do mapa do Universo, realizado pelo
+          telescópio Euclid para desvendar o mistério da matéria escura.
+        </p>
+        <p>Fonte: ISTOE</p>
+        <a
+          target="_blank"
+          href="https://istoedinheiro.com.br/agencia-espacial-europeia-revela-1a-pagina-do-atlas-cosmico-do-telescopio-euclid/"
+        >
+          <button>Saiba mais</button>
+        </a>
+      </div>
+    </section>
+
+    <!-- MENU QUEM SOMOS -->
+
+    <!-- INÍCIO DO CARROSSEL QUEM SOMOS -->
+    <div id="quem-somos">
+      <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#myCarousel"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#myCarousel"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#myCarousel"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"
+          ></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <svg
+              class="bd-placeholder-img"
+              width="100%"
+              height="100%"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+              preserveAspectRatio="xMidYMid slice"
+              focusable="false"
+            >
+              <rect
+                width="100%"
+                height="100%"
+                fill="var(--bs-secondary-color)"
+              />
+            </svg>
+            <div class="container">
+              <div class="carousel-caption text-start">
+                <h2>Quem Somos</h2>
+                <p class="opacity-75">
+                  Nosso foco está em formar profissionais qualificados para o
+                  mercado de trabalho, oferecendo uma educação prática e
+                  atualizada nas áreas de programação, design, dados e outras
+                  disciplinas tecnológicas.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <svg
+              class="bd-placeholder-img"
+              width="100%"
+              height="100%"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+              preserveAspectRatio="xMidYMid slice"
+              focusable="false"
+            >
+              <rect
+                width="100%"
+                height="100%"
+                fill="var(--bs-secondary-color)"
+              />
+            </svg>
+            <div class="container">
+              <div class="carousel-caption">
+                <h2>Missão</h2>
+                <p class="opacity-75">
+                  Formar cidadãos críticos e criativos, capacitando-os com
+                  habilidades tecnológicas essenciais para enfrentar os desafios
+                  do futuro, promovendo a inovação, o aprendizado contínuo e o
+                  trabalho colaborativo.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <svg
+              class="bd-placeholder-img"
+              width="100%"
+              height="100%"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+              preserveAspectRatio="xMidYMid slice"
+              focusable="false"
+            >
+              <rect
+                width="100%"
+                height="100%"
+                fill="var(--bs-secondary-color)"
+              />
+            </svg>
+            <div class="container">
+              <div class="carousel-caption text-end">
+                <h2>Visão</h2>
+                <p class="opacity-75">
+                  Ser referência em educação tecnológica, preparando nossos
+                  alunos para se tornarem líderes inovadores e éticos, capazes
+                  de transformar a sociedade por meio da tecnologia e do
+                  conhecimento
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#myCarousel"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Voltar</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#myCarousel"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Avançar</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- FIM DO CARROSSEL quem somos -->
+
+    <!-- MENU DE CONTATO -->
+    <section id="contato">
+      <div class="contact-form">
+        <h2>Entre em contato</h2>
+        <form>
+          <label for="name"><i class="fas fa-user"></i> Nome</label>
+          <input type="text" id="name" placeholder="Digite seu nome" />
+
+          <label for="email"><i class="fas fa-envelope"></i> Email</label>
+          <input type="text" id="email" placeholder="Digite seu email" />
+
+          <!-- <label for="name"><i class="fas fa-comment"></i>Mensagem</label> -->
+          <label for="name"><i class="fas fa-anchor"></i> Mensagem</label>
+          <textarea
+            id="message"
+            rows="5"
+            placeholder="Como podemos te ajudar?"
+          ></textarea>
+          <button type="submit">
+            Enviar <i class="fas fa-location-arrow"></i>
+          </button>
+        </form>
+      </div>
+
+      <div class="mapa">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9397.498585009762!2d-48.07476936716726!3d-15.820841288738858!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a3391b366fc47%3A0x88c16b784a3ad98f!2sSenai%20Taguatinga!5e0!3m2!1spt-BR!2sbr!4v1729135869079!5m2!1spt-BR!2sbr"
+          width="600"
+          height="450"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+        <br />
+        <h6>Endereço: St. C Norte Área Especial 2 - Taguatinga</h6>
+        <h6>Brasília - DF</h6>
+        <h6>Telefone: (61) 3554-7436</h6>
+        <h6>Horário: Segunda a Sexta, de 08h às 22h</h6>
+      </div>
+    </section>
+
+    <!-- Rodapé com informações de contato -->
+    <footer id="rodape">
+      <div class="rodape">
+        <a href="https://policies.google.com/privacy?hl=pt-BR" target="_blank">
+          <p>Termos e Privacidade</p>
+        </a>
+      </div>
+
+      <div class="rodape">
+        <p>&copy; 2024 - Todos os direitos reservados.</p>
+      </div>
+
+      <div class="rodape">
+        <p>Redes Sociais</p>
+
+        <a
+          href="https://www.youtube.com/channel/UChcNrZWnl5MH6RX84ORcreQ"
+          target="_blank"
+        >
+          <i class="fa-brands fa-youtube"></i>
+        </a>
+
+        <a href="https://www.instagram.com/senai_df" target="_blank">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+
+        <a href="https://www.facebook.com/senaidf" target="_blank">
+          <i class="fa-brands fa-facebook"></i>
+        </a>
+      </div>
+    </footer>
+
+    <!-- Link para o arquivo JavaScript externo -->
+    <!-- Javascript -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- CÓDIGO PARA INSERIR O BOTÃO/ACESSEBILIDADE LIBRAS -->
+    <div vw class="enabled">
+      <div vw-access-button class="active"></div>
+      <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+      </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+      new window.VLibras.Widget("https://vlibras.gov.br/app");
+    </script>
+    <script src="script/modais.js"></script>
+    <script type="module" src="script/script.js"></script>
+    <script type="module" src="script/login.js"></script>
+    <script type="module" src="script/loading.js"></script>
+
+  </body>
+</html>

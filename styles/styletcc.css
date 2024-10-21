@@ -1,0 +1,747 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  background-color: rgb(212, 232, 240);
+  color: #333;
+}
+
+/* INÍCIO DO ESTILO DO CABEÇALHO*/
+header {
+  background-color: #0a1f33;
+  /*Define a cor de fundo do cabeçalho.*/
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  list-style-type: none;
+  position: sticky;
+  /*para fixar o header apenas quando o usuário rolar a página.*/
+  top: 0;
+  /*Posiciona o cabeçalho no canto superior esquerdo da janela.*/
+  left: 0;
+  /*Posiciona o cabeçalho no canto superior esquerdo da janela.*/
+  width: 100%;
+  /*Faz com que o cabeçalho ocupe toda a largura da tela.*/
+  z-index: 999;
+  /* Garante que o cabeçalho fique acima dos outros elementos. Define a ordem dos elementos empilhados. Um valor maior indica que o elemento está acima dos outros*/
+}
+
+header .portal {
+  font-size: 40px;
+}
+
+header .logout {
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+header .logout:hover {
+  transform: scale(1.2);
+  /* Aumenta em 20% ao passar o mouse*/
+  text-decoration: none;
+}
+
+/* ESTILO DA LOGO DO SENAI NO CANTO SUPERIOR ESQUERDO DO CABEÇALHO HEADER */
+header .logo img {
+  width: 80px;
+  margin-right: 20px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-left: 50px;
+}
+
+/* ESTILO DA NAVEGAÇÃO DO CABEÇALHO */
+nav {
+  margin-right: 100px;
+  font-size: 22px;
+}
+
+nav a {
+  color: white;
+  margin-left: 30px;
+  text-decoration: none;
+}
+
+nav a:hover {
+  text-decoration: none;
+  color: #31a5c2;
+  transition: color 0.3s;
+  transform: scale(1.2);
+}
+
+/* FIM DO ESTILO DO CABEÇALHO*/
+
+/* ESTILO DO MENU LATERAL ESQUERDO DAS PAGINAS PROFESSOR/GESTOR/ALUNO */
+aside {
+  width: 220px;
+  height: 400px;
+  float: left;
+  padding: 20px;
+  background-color: #122e47;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  z-index: 1099;
+}
+
+/* centralizando a foto do avatar */
+aside .logo {
+  text-align: center;
+}
+
+aside .logo img {
+  width: 150px;
+  border-radius: 50%;
+  border: rgb(165, 161, 159) solid;
+  margin-bottom: 50px;
+}
+
+aside ul {
+  list-style-type: none;
+  margin-bottom: 30px;
+}
+
+aside ul li {
+  margin-bottom: 10px;
+}
+
+aside ul li a {
+  color: #ece6e6;
+  /*cor do texto cinza claro*/
+  text-decoration: none;
+  /*remove o sublinhado dos links*/
+  font-weight: bold;
+  /*deixa o texto em negrito*/
+  transition: color 0.3s;
+  /*adiciona um efeito de transição suave quando a cor muda, levando 0,3 segundos*/
+}
+
+aside ul li a:hover {
+  color: #31a5c2;
+}
+
+/* slide de fotos */
+.carouselfoto {
+  position: relative;
+  width: 211vh;
+  height: 300px;
+  overflow: hidden;
+  /* border-radius: 10px; */
+}
+
+.slidesfoto {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slidefoto {
+  min-width: 1920px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 48px;
+  color: #fff;
+  font-weight: bold;
+}
+
+.slidesfoto img {
+  width: 100%;
+  height: 650px;
+  object-fit: cover;
+}
+
+.prevfoto,
+.nextfoto {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 24px;
+  border-radius: 50%;
+}
+
+.prevfoto {
+  left: 20px;
+}
+
+.nextfoto {
+  right: 20px;
+}
+
+/* slide de fotos */
+
+/* INÍCIO DO ESTILO DO CATÁLOGO DE NOTÍCIAS*/
+#catalogo {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  /*4 colunas de tamanhos iguais*/
+  gap: 20px;
+  /*espaçamento entre as grids*/
+  padding: 20px 70px;
+}
+
+.noticias {
+  margin-top: 30px;
+  margin-left: 100px;
+  font-size: 25px;
+  text-align: left;
+  /* padding: 0px 0px; */
+  color: #031524;
+}
+
+/* estilos dos cards */
+.catalog-card {
+  background-color: #cde4f3;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+/* efeito de zoom */
+.catalog-card:hover {
+  transform: scale(1.05);
+  /*aumentará o card em 5%*/
+}
+
+/* estilo da imagem do card */
+.catalog-card img {
+  width: 100%;
+  /*tamanho da imagem*/
+  border-radius: 10px;
+  /*arredondamento da borda da imagem*/
+}
+
+/* título do catálogo */
+.catalog-card h3 {
+  font-size: 20px;
+  margin: 15x 0;
+  color: #030830;
+  text-decoration: solid;
+}
+
+/* descrição do carro */
+.catalog-card p {
+  color: #030830;
+  margin-bottom: 15px;
+  /*insere uma margem acima, separando melhor h3 e p*/
+}
+
+.catalog-card button {
+  padding: 10px 20px;
+  background-color: #0b244b;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* estilo do botão */
+.catalog-card button:hover {
+  background-color: #31a5c2;
+  /*efeito ao passar o mouse*/
+}
+
+/* FIM DO ESTILO DO CATÁLOGO */
+
+/* INÍCIO DO ESTILO DO FORMULÁRIO DE CONTATO */
+#contato {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /*2 colunas de tamanhos iguais*/
+  gap: 10px;
+  /*espaçamento entre as grids*/
+  padding: 30px 30px;
+  margin-right: 30px;
+  margin-left: 30px;
+  margin-top: 1px;
+}
+
+.mapa {
+  padding: 80px 80px;
+  margin-top: 80px;
+  margin-right: 20px;
+  border-radius: 50px;
+  box-shadow: 0 4px 8px (0, 0, 0, 0.1);
+  color: #031524;
+}
+
+.mapa iframe {
+  display: block;
+  margin: auto;
+  width: 70%;
+  height: 70%;
+}
+
+.mapa h6 {
+  text-align: center;
+}
+
+.contact-form {
+  /* background-color: #4f7594; */
+  padding: 80px 80px;
+  margin-top: 40px;
+  margin-right: 20px;
+  margin-left: 20px;
+  border-radius: 50px;
+  box-shadow: 0 4px 8px (0, 0, 0, 0.1);
+  color: #031524;
+}
+
+/* titulo da seção de contato */
+.contact-form h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* estilo dos labels */
+.contact-form label {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 8px;
+  width: 100%;
+}
+
+/* estilos dos campos do formulário de contato */
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #1c1650;
+  border-radius: 5px;
+}
+
+/* estilo do botão */
+.contact-form button {
+  text-align: center;
+  align-items: center;
+  width: 100%;
+  padding: 15px 30px;
+  background-color: #0b244b;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+  background-color: #0056b3;
+  /*cor ao passar o mouse no botão de enviar contato*/
+}
+
+/* FIM DO ESTILO DO FORMULÁRIO DE CONTATO */
+
+/* INÍCIO DO ESTILO DO RODAPÉ DA PÁGINA */
+footer {
+  background-color: #0a1f33;
+  /* Cor de fundo escura para o rodapé */
+  color: white;
+  /* Cor do texto branca */
+  text-align: center;
+  /* Centraliza o texto no rodapé */
+  padding: 10px 0;
+  /* Espaçamento interno no topo e embaixo */
+  margin-top: 40px;
+  /* Espaçamento superior para separar o rodapé do conteúdo principal */
+  position: relative;
+  /*ficar no final fixo*/
+  bottom: 0;
+  /*sem espaçamento abaixo dele*/
+  width: 100%;
+  /* ocupa a largura total da tela*/
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  /*3 colunas de tamanhos iguais*/
+  gap: 20px;
+  /*espaçamento entre as grids*/
+  padding: 40px 50px;
+  align-items: center;
+  /* Alinha os itens verticalmente no centro */
+}
+
+.rodape a {
+  padding: 20px 30px;
+  width: 100%;
+  border: none;
+  text-decoration: none;
+  color: #efeff1;
+}
+
+.rodape i {
+  color: #31a5c2;
+  width: 30px;
+  text-decoration: none;
+  font-size: 200%;
+  justify-content: space-between;
+}
+
+.rodape p {
+  font-size: 110%;
+}
+
+/* FIM DO ESTILO DO RODAPÉ DA PÁGINA */
+
+/* INÍCIO DO ESTILO DA PÁGINA DO GESTOR */
+/* Container principal */
+main.container {
+  flex: 1;
+  padding: 20px;
+  background-color: #f4f4f4;
+  overflow-y: auto;
+}
+
+/* Seções de formulário */
+.section {
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  display: none;
+  /* Inicialmente escondido */
+}
+
+.section h2 {
+  margin-top: 0;
+}
+
+.section form {
+  display: flex;
+  flex-direction: column;
+}
+
+.section form label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.section form input {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.section form button {
+  padding: 10px;
+  background-color: #0b244b;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.section form button:hover {
+  background-color: #31a5c2;
+}
+/* FIM DO ESTILO DA PÁGINA DO GESTOR */
+
+/* INÍCIO DO ESTILO DA PÁGINA DO ALUNO */
+/* Container principal */
+main.container-aluno {
+  flex: 1;
+  padding: 20px;
+  background-color: #f4f4f4;
+  overflow-y: auto;
+}
+
+/* Seções de formulário */
+.section-aluno {
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  display: none; /* Inicialmente escondido */
+}
+/* Layout principal */
+.main-content-aluno {
+  display: flex;
+  flex: 1;
+  height: calc(100vh - 80px); /* Ajusta a altura excluindo o cabeçalho */
+}
+/* FIM DO ESTILO DA PÁGINA DO ALUNO */
+
+/* INÍCIO DO ESTILO DA PÁGINA DO PROFESSOR */
+
+/* Container principal */
+main.container-prof {
+  flex: 1;
+  padding: 20px;
+  background-color: #f4f4f4;
+  overflow-y: auto;
+}
+
+/* Seções de formulário */
+.section-prof {
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  display: none; /* Inicialmente escondido */
+}
+.main-content-prof {
+  display: flex;
+  flex: 1;
+  height: calc(100vh - 80px); /* Ajusta a altura excluindo o cabeçalho */
+}
+
+/* FIM DO ESTILO DA PÁGINA DO PROFESSOR */
+
+/* ESTILOS DAS MODAIS  */
+
+.auth-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.login-button,
+.logout-button {
+  text-decoration: none;
+  padding: 8px 12px;
+  background-color: #0f9ed691;
+  /* Cor do botão */
+  color: white;
+  /* Cor do texto */
+  border-radius: 4px;
+  /* Bordas arredondadas */
+}
+
+.modal {
+  display: none; /* Oculta a modal por padrão */
+  position: fixed; /* Fica fixa na tela */
+  z-index: 1; /* Fica acima de outros elementos */
+  left: 0;
+  top: 0;
+  width: 100%; /* Largura total */
+  height: 100%; /* Altura total */
+  overflow: auto; /* Permite rolagem se necessário */
+  background-color: rgba(10, 31, 51, 0.7); /* Fundo escuro com opacidade */
+}
+
+.modal-content {
+  background-color: #fefefe; /* Cor de fundo da modal */
+  margin: 10% auto; /* Centraliza verticalmente */
+  padding: 20px;
+  border-radius: 10px; /* Bordas arredondadas */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra suave */
+  width: 300px; /* Largura da modal */
+}
+
+.close {
+  color: #0a1f33; /* Cor do 'x' de fechar */
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #007bff; /* Cor ao passar o mouse */
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-content h2 {
+  color: #0a1f33; /* Cor do título */
+}
+
+.modal-content label {
+  font-weight: bold; /* Labels em negrito */
+}
+
+.modal-content input,
+.modal-content select {
+  width: calc(100% - 20px); /* Largura total menos padding */
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc; /* Bordas padrão */
+  border-radius: 5px; /* Bordas arredondadas */
+}
+
+.modal-content button {
+  width: 100%; /* Largura total do botão */
+  padding: 12px;
+  background-color: #0b244b; /* Cor do botão */
+  color: white; /* Cor do texto */
+  border: none;
+  border-radius: 5px; /* Bordas arredondadas */
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Efeito de transição */
+}
+
+.modal-content button:hover {
+  background-color: #0e3dbe; /* Cor ao passar o mouse */
+}
+
+/* Estilo para o botão de login/logout */
+.login-logout {
+  padding: 15px 30px;
+  font-size: 18px;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  transition: 0.5s;
+  background: linear-gradient(45deg, #1e1e1e, #4a4a4a); /* Gradiente para um efeito mais interessante */
+  cursor: pointer;
+  color: rgb(81, 243, 255);
+  box-shadow: 0 0 10px #363636, inset 0 0 10px #363636;
+}
+
+.login-logout:hover {
+  animation: a 0.5s 1 linear;
+  background: linear-gradient(45deg, #4a4a4a, #1e1e1e); /* Mudança de gradiente ao passar o mouse */
+}
+
+@keyframes a {
+  0% {
+    transform: scale(0.7, 1.3);
+  }
+
+  25% {
+    transform: scale(1.3, 0.7);
+  }
+
+  50% {
+    transform: scale(0.7, 1.3);
+  }
+
+  75% {
+    transform: scale(1.3, 0.7);
+  }
+
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+/* Estilo geral da tabela */
+table {
+  width: 100%;
+  border-collapse: collapse; /* Remove espaços entre as bordas das células */
+  margin-bottom: 20px; /* Espaço abaixo das tabelas */
+}
+
+/* Estilo para cabeçalhos da tabela */
+th {
+  background-color: #e0f7fa; /* Azul claro */
+  color: #00796b; /* Cor do texto dos cabeçalhos */
+  padding: 12px; /* Espaçamento interno */
+  text-align: left; /* Alinhamento à esquerda */
+  font-weight: bold; /* Negrito para os cabeçalhos */
+  border-bottom: 2px solid transparent; /* Para efeito de transição */
+  transition: border-bottom 0.3s; /* Suaviza a transição */
+}
+
+/* Efeito ao passar o mouse sobre os cabeçalhos */
+th:hover {
+  border-bottom: 2px solid #00796b; /* Adiciona uma linha embaixo do cabeçalho ao passar o mouse */
+}
+
+/* Estilo para as células do corpo da tabela */
+td {
+  padding: 12px; /* Espaçamento interno */
+  background-color: #ffffff; /* Branco */
+  color: #333333; /* Cor do texto */
+}
+
+/* Alterna a cor das linhas do corpo da tabela */
+tbody tr:nth-child(even) td {
+  background-color: #e3f2fd; /* Azul claro para linhas pares */
+}
+
+/* Estilo do h2 */
+h2 {
+  margin-bottom: 10px; /* Espaçamento abaixo do título */
+  color: #00796b; /* Cor do texto */
+}
+
+/* Estilos para dispositivos com largura máxima de 800px */
+@media (max-width: 800px) {
+  aside {
+    width: 100%; /* O menu lateral ocupa toda a largura */
+    float: none; /* Remove o float */
+    padding: 10px; /* Ajusta o padding */
+  }
+
+  header {
+    flex-direction: column; /* Coloca os itens do cabeçalho em coluna */
+  }
+
+  header .logo img {
+    width: 60px; /* Reduz o tamanho da logo */
+  }
+
+  nav {
+    margin-right: 0; /* Remove o margin */
+  }
+
+  nav a {
+    font-size: 16px; /* Reduz o tamanho da fonte do menu de navegação */
+  }
+
+  #catalogo {
+    grid-template-columns: repeat(2, 1fr); /* 2 colunas no catálogo */
+  }
+
+  #contato {
+    grid-template-columns: 1fr; /* Uma coluna no formulário de contato */
+  }
+
+  .mapa, .contact-form {
+    padding: 20px; /* Ajusta o padding dos formulários */
+  }
+
+  .mapa iframe {
+    width: 100%; /* O iframe ocupa toda a largura */
+    height: 200px; /* Ajusta a altura */
+  }
+}
+
+/* Estilos para dispositivos com largura máxima de 500px */
+@media (max-width: 500px) {
+  header .portal {
+    font-size: 24px; /* Reduz ainda mais o tamanho da fonte do cabeçalho */
+  }
+
+  .prevfoto, .nextfoto {
+    font-size: 18px; /* Ajusta o tamanho dos botões do carrossel */
+  }
+
+  .catalog-card h3 {
+    font-size: 18px; /* Reduz o tamanho do título dos cards */
+  }
+
+  .catalog-card p {
+    font-size: 14px; /* Reduz o tamanho do texto dos cards */
+  }
+
+  .catalog-card button {
+    padding: 8px 15px; /* Ajusta o padding dos botões */
+  }
+
+  footer {
+    grid-template-columns: 1fr; /* Uma coluna no rodapé */
+  }
+}
+
+
+
